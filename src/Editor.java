@@ -22,7 +22,7 @@ import java.util.Scanner;
 
 public class Editor {
 
-	private static Scanner       input = new Scanner;
+	private static Scanner input = new Scanner;
 	private static StringBuilder lineEditor;
 
 	public Editor(String inString) {
@@ -37,14 +37,7 @@ public class Editor {
 		this.lineEditor = lineEditor;
 	}
 
-	/*Delete string (D). In this method, you will prompt for the index where you want to start deleting a string. You
-	will also prompt for the index of the characters one past the last location to delete. Then use a standard
-	StringBuilder method to help you complete the task and output the updated string. If a user type in an index that
-	is longer than the length of your lineEditor, an exception will occur. Handle this exception by using “try and
-	catch” clauses. Also, output the error message that the exception returns. In addition to that,
-	output another message to explain that the segment of string has not been deleted due to error.  Hint: Read your
-	textbook to find out which type of exception will occur and handle it. Look for clues in Common Programming Error
-	box.*/
+
 	public void deleteString() throws StringIndexOutOfBoundsException {
 
 		StringBuilder beforeDelete = getLineEditor();
@@ -69,44 +62,62 @@ public class Editor {
 		}
 	}
 
-	/*Set Upper Case (U). In this method, you will first prompt for the index of the character that you want to
-	convert to upper case. You can make the assumption that the character will be within a-z or A-Z (the input will be
-	 a valid letter). You will have to check the character at the index to make sure that it is still in lower case.
-	 If that is the case, you will convert the lower case character to a upper case character and output the updated
-	 string. Otherwise, output a statement explaining that “The letter is already in upper case and no conversion is
-	 conducted.”  Hint: use methods from Character Class to assist you. Also,
-	 use the appropriate built-in StringBuilder method(s) to help you too. If a user type in an index that is longer
-	 than the length of your lineEditor, an exception will occur. Handle this exception by using “try and catch”
-	 clauses. Also, output the error message that the exception returns. In addition,
-	 output another message to explain that the lineEditor has not been updated due to error.  Hint: Read your
-	 textbook to find out which type of exception will occur and handle it. Look for clues in Common Programming Error
-	  box.*/
 	public void setUpperCase() throws StringIndexOutOfBoundsException {
 
 		StringBuilder beforeCase = getLineEditor();
 
-		try
-		{
-		System.out.println("Please enter the index of the string to convert to upper case: ");
-		int replaceIndex = input.nextInt();
+		try {
+			System.out.println("Please enter the index of the string to convert to upper case: ");
+			int replaceIndex = input.nextInt();
 
-		if (replaceIndex < 0 || replaceIndex > beforeCase.length()) {
-			throw new StringIndexOutOfBoundsException();
-		}
-		else if (Character.isLowerCase(replaceIndex)) {
-			beforeCase.replace(replaceIndex, replaceIndex,
-			                   Character.toString(Character.toUpperCase(beforeCase.charAt(replaceIndex))));
-			System.out.println("Updated Line Editor = " + beforeCase);
-			setLineEditor(beforeCase);
-		}
+			if (replaceIndex < 0 || replaceIndex > beforeCase.length()) {
+				throw new StringIndexOutOfBoundsException();
+			}
+			else if (Character.isLowerCase(replaceIndex)) {
+				beforeCase.replace(replaceIndex, replaceIndex,
+				                   Character.toString(Character.toUpperCase(beforeCase.charAt(replaceIndex)))
+				                  );
+				System.out.println("Updated Line Editor = " + beforeCase);
+				setLineEditor(beforeCase);
+			}
 			else {
-			System.out.println("The character at the specified location is already in upper case, " +
-					                   "no conversion is done");
-		}
+				System.out.println("The character at the specified location is already in upper case, " +
+						                   "no conversion is done"
+				                  );
+			}
 		}
 		catch (StringIndexOutOfBoundsException e) {
 			System.out.println(e + "\nThe segment of string is not deleted due to error!");
 		}
+	}
+
+
+	public void countWords() {
+
+		StringBuilder beforeCount = getLineEditor();
+
+		System.out.println("Please enter the target string: ");
+		String targetWord = input.nextLine();
+
+		String[] result = beforeCount.toString().split("\\s");
+
+		int foundTargetWord = 0;
+
+		for (int i = 0; i < result.length; i++) {
+			if (targetWord.matches(result[i])) {
+				foundTargetWord++;
+			}
+		}
+
+		if (foundTargetWord > 0) {
+			System.out.println("The target word " + targetWord + " appears " + foundTargetWord + " times in " +
+					                   beforeCount);
+		}
+		else {
+		   System.out.println("The target word " + targetWord + " is not in " + beforeCount);
+		}
+	}
+
 
 
 }
