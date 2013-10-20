@@ -1,1 +1,194 @@
 This file was created by IntelliJ IDEA 12.1.6 for binding GitHub repository
+
+
+Sample Output
+
+Welcome to My Line Editor
+=========================
+
+Your current string is : Mary had a little lamb, Little lamb, little lamb!
+
+S - Change String
+D - Delete String
+U - Set Upper Case
+C - Count words
+X - To eXit the program
+
+Please enter your choice : u
+
+Please enter the index of the string to convert to upper case: 60
+
+String index out of range: 60
+The character is not converted due to error!
+
+Welcome to My Line Editor
+=========================
+
+Your current string is : Mary had a little lamb, Little lamb, little lamb!
+
+S - Change String
+D - Delete String
+U - Set Upper Case
+C - Count words
+X - To eXit the program
+
+Please enter your choice : c
+
+Please enter the target string: dog
+
+The target word dog is not in Mary had a little lamb, Little lamb, little lamb!
+
+Welcome to My Line Editor
+=========================
+
+Your current string is : Mary had a little lamb, Little lamb, little lamb!
+
+S - Change String
+D - Delete String
+U - Set Upper Case
+C - Count words
+X - To eXit the program
+
+Please enter your choice : K
+
+Invalid input! Please re-enter or type in 'X' to eXit!
+
+Welcome to My Line Editor
+=========================
+
+Your current string is : Mary had a little lamb, Little lamb, little lamb!
+
+S - Change String
+D - Delete String
+U - Set Upper Case
+C - Count words
+X - To eXit the program
+
+Please enter your choice : d
+
+Please enter the index to delete the string: 0
+
+Please enter the index one past the last character of string to be deleted: 4
+
+Updated Line Editor =  had a little lamb, Little lamb, little lamb!
+
+Welcome to My Line Editor
+=========================
+
+Your current string is :  had a little lamb, Little lamb, little lamb!
+
+S - Change String
+D - Delete String
+U - Set Upper Case
+C - Count words
+X - To eXit the program
+
+Please enter your choice : S
+
+Please enter a new string : Katie had a little lamb, little lamb, little lamb!
+
+
+Welcome to My Line Editor
+=========================
+
+Your current string is : Katie had a little lamb, little lamb, little lamb!
+
+S - Change String
+D - Delete String
+U - Set Upper Case
+C - Count words
+X - To eXit the program
+
+Please enter your choice : D
+
+Please enter the index to delete the string: 45
+
+Please enter the index one past the last character of string to be deleted: 53
+
+Updated Line Editor = Katie had a little lamb, little lamb, little
+
+Welcome to My Line Editor
+=========================
+
+Your current string is : Katie had a little lamb, little lamb, little
+
+S - Change String
+D - Delete String
+U - Set Upper Case
+C - Count words
+X - To eXit the program
+
+Please enter your choice : d
+
+Please enter the index to delete the string: 70
+
+
+Please enter the index one past the last character of string to be deleted: 79
+
+
+java.lang.StringIndexOutOfBoundsException
+The segment of string is not deleted due to error!
+
+Welcome to My Line Editor
+=========================
+
+Your current string is : Katie had a little lamb, little lamb, little
+
+S - Change String
+D - Delete String
+U - Set Upper Case
+C - Count words
+X - To eXit the program
+
+Please enter your choice : u
+
+Please enter the index of the string to convert to upper case: 0
+
+The character at the specified location is already in upper case, no conversion is done.
+
+Welcome to My Line Editor
+=========================
+
+Your current string is : Katie had a little lamb, little lamb, little
+
+S - Change String
+D - Delete String
+U - Set Upper Case
+C - Count words
+X - To eXit the program
+
+Please enter your choice : U
+
+Please enter the index of the string to convert to upper case: 7
+
+Updated Line Editor = Katie hAd a little lamb, little lamb, little
+
+Welcome to My Line Editor
+=========================
+
+Your current string is : Katie hAd a little lamb, little lamb, little
+
+S - Change String
+D - Delete String
+U - Set Upper Case
+C - Count words
+X - To eXit the program
+
+Please enter your choice : c
+
+
+The target word lamb appears 2 times in Katie hAd a little lamb, little lamb, little
+
+Welcome to My Line Editor
+=========================
+
+Your current string is : Katie hAd a little lamb, little lamb, little
+
+S - Change String
+D - Delete String
+U - Set Upper Case
+C - Count words
+X - To eXit the program
+
+Please enter your choice : X
+
