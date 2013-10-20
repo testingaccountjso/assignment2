@@ -22,8 +22,8 @@ import java.util.Scanner;
 
 public class Editor {
 
-	private static Scanner input = new Scanner;
-	private static StringBuilder lineEditor;
+	private static Scanner input = new Scanner(System.in);
+	private StringBuilder lineEditor;
 
 	public Editor(String inString) {
 		lineEditor = new StringBuilder(inString);
@@ -43,7 +43,7 @@ public class Editor {
 		StringBuilder beforeDelete = getLineEditor();
 
 		try {
-			System.out.println("Please enter the index to delete the string: ");
+			System.out.println("\nPlease enter the index to delete the string: ");
 			int begIndex = input.nextInt();
 
 			System.out.println("Please enter the index one past the last character of string to be deleted: ");
@@ -67,7 +67,7 @@ public class Editor {
 		StringBuilder beforeCase = getLineEditor();
 
 		try {
-			System.out.println("Please enter the index of the string to convert to upper case: ");
+			System.out.println("\nPlease enter the index of the string to convert to upper case: ");
 			int replaceIndex = input.nextInt();
 
 			if (replaceIndex < 0 || replaceIndex > beforeCase.length()) {
@@ -96,7 +96,7 @@ public class Editor {
 
 		StringBuilder beforeCount = getLineEditor();
 
-		System.out.println("Please enter the target string: ");
+		System.out.println("\nPlease enter the target string: ");
 		String targetWord = input.nextLine();
 
 		String[] result = beforeCount.toString().split("\\s");
@@ -111,13 +111,13 @@ public class Editor {
 
 		if (foundTargetWord > 0) {
 			System.out.println("The target word " + targetWord + " appears " + foundTargetWord + " times in " +
-					                   beforeCount);
+					                   beforeCount
+			                  );
 		}
 		else {
-		   System.out.println("The target word " + targetWord + " is not in " + beforeCount);
+			System.out.println("The target word " + targetWord + " is not in " + beforeCount);
 		}
 	}
-
 
 
 }
