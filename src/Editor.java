@@ -18,9 +18,12 @@
 
 package edu.utsa.assignmenttwo;
 
+import java.util.Scanner;
+
 public class Editor {
 
-	private StringBuilder lineEditor;
+	private static Scanner       input = new Scanner;
+	private static StringBuilder lineEditor;
 
 	public Editor(String inString) {
 		lineEditor = new StringBuilder(inString);
@@ -42,8 +45,68 @@ public class Editor {
 	output another message to explain that the segment of string has not been deleted due to error.  Hint: Read your
 	textbook to find out which type of exception will occur and handle it. Look for clues in Common Programming Error
 	box.*/
-	public StringBuilder deleteString(StringBuilder inString) {
+	public void deleteString() throws StringIndexOutOfBoundsException {
 
+		StringBuilder beforeDelete = getLineEditor();
+
+		try {
+			System.out.println("Please enter the index to delete the string: ");
+			int begIndex = input.nextInt();
+
+			System.out.println("Please enter the index one past the last character of string to be deleted: ");
+			int endIndex = input.nextInt();
+
+			if (begIndex < 0 || begIndex > endIndex || endIndex > beforeDelete.length()) {
+				throw new StringIndexOutOfBoundsException();
+			}
+			else {
+				beforeDelete.delete(begIndex, endIndex);
+				setLineEditor(beforeDelete);
+			}
+		}
+		catch (StringIndexOutOfBoundsException e) {
+			System.out.println(e + "\nThe segment of string is not deleted due to error!");
+		}
 	}
+
+	/*Set Upper Case (U). In this method, you will first prompt for the index of the character that you want to
+	convert to upper case. You can make the assumption that the character will be within a-z or A-Z (the input will be
+	 a valid letter). You will have to check the character at the index to make sure that it is still in lower case.
+	 If that is the case, you will convert the lower case character to a upper case character and output the updated
+	 string. Otherwise, output a statement explaining that “The letter is already in upper case and no conversion is
+	 conducted.”  Hint: use methods from Character Class to assist you. Also,
+	 use the appropriate built-in StringBuilder method(s) to help you too. If a user type in an index that is longer
+	 than the length of your lineEditor, an exception will occur. Handle this exception by using “try and catch”
+	 clauses. Also, output the error message that the exception returns. In addition,
+	 output another message to explain that the lineEditor has not been updated due to error.  Hint: Read your
+	 textbook to find out which type of exception will occur and handle it. Look for clues in Common Programming Error
+	  box.*/
+	public void setUpperCase() throws StringIndexOutOfBoundsException {
+
+		StringBuilder beforeCase = getLineEditor();
+
+		try
+		{
+		System.out.println("Please enter the index of the string to convert to upper case: ");
+		int replaceIndex = input.nextInt();
+
+		if (replaceIndex < 0 || replaceIndex > beforeCase.length()) {
+			throw new StringIndexOutOfBoundsException();
+		}
+		else if (Character.isLowerCase(replaceIndex)) {
+			beforeCase.replace(replaceIndex, replaceIndex,
+			                   Character.toString(Character.toUpperCase(beforeCase.charAt(replaceIndex))));
+			System.out.println("Updated Line Editor = " + beforeCase);
+			setLineEditor(beforeCase);
+		}
+			else {
+			System.out.println("The character at the specified location is already in upper case, " +
+					                   "no conversion is done");
+		}
+		}
+		catch (StringIndexOutOfBoundsException e) {
+			System.out.println(e + "\nThe segment of string is not deleted due to error!");
+		}
+
 
 }
