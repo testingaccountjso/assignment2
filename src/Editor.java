@@ -15,9 +15,24 @@
  * You will then write the three methods listed above for each of the tasks that Editor can perform.
  *
  */
-public class Editor {
-    private StringBuilder lineEditor;
 
+package edu.utsa.assignmenttwo;
+
+public class Editor {
+
+	private StringBuilder lineEditor;
+
+	public Editor(String inString) {
+		lineEditor = new StringBuilder(inString);
+	}
+
+	public StringBuilder getLineEditor() {
+		return lineEditor;
+	}
+
+	public void setLineEditor(StringBuilder lineEditor) {
+		this.lineEditor = lineEditor;
+	}
 
 
 }
