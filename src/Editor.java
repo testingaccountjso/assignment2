@@ -55,6 +55,7 @@ public class Editor {
 
 		System.out.print("\nPlease enter the index of the string to convert to upper case: ");
 		int replaceIndex = input.nextInt();
+		input.nextLine();
 
 		try {
 			if (replaceIndex < 0 || replaceIndex > upperString.length()) {
@@ -81,11 +82,10 @@ public class Editor {
 
 	public void countWords() {
 
-		StringBuilder countString = getLineEditor();
-
 		System.out.print("\nPlease enter the target string: ");
 		String targetWord = input.nextLine();
 
+		StringBuilder countString = getLineEditor();
 		String[] result = countString.toString().split("\\s");
 
 		int foundTargetWord = 0;

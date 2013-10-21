@@ -12,7 +12,7 @@ public class EditorTest {
 		Editor editor = new Editor(sbObject.toString());
 
 		do {
-			System.out.print("\n\nWelcome to My Line Editor\n=========================\n\nYour current string is : " +
+			System.out.print("\nWelcome to My Line Editor\n=========================\n\nYour current string is : " +
 					                 editor.getLineEditor() + "\n\nS - Change String\nD - Delete String\nU - Set " +
 					                 "Upper" +
 					                 " Case\nC - Count words\nX - To eXit the program\n\nPlease enter your choice : "
@@ -30,19 +30,18 @@ public class EditorTest {
 				case 'D':
 					editor.deleteString();
 					break;
-
 				case 'U':
 					editor.setUpperCase();
 					break;
-
 				case 'C':
 					editor.countWords();
 					break;
-
 				case 'X':
 					exit = 1;
 					break;
-
+				default:
+					System.out.print("Invalid input! Please re-enter or type in 'X' to eXit!");
+					break;
 			}
 		} while (exit == 0);
 	}
