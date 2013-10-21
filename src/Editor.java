@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Editor {
 
-	private static Scanner input = new Scanner(System.in);
+	private Scanner input = new Scanner(System.in);
 	private StringBuilder lineEditor;
 
 	public Editor(String inString) {
@@ -26,21 +26,21 @@ public class Editor {
 
 	public void deleteString() throws StringIndexOutOfBoundsException {
 
-		StringBuilder beforeDelete = getLineEditor();
+		StringBuilder deleteStr = getLineEditor();
 
 		try {
-			System.out.println("\nPlease enter the index to delete the string: ");
+			System.out.print("\nPlease enter the index to delete the string: ");
 			int begIndex = input.nextInt();
 
-			System.out.println("Please enter the index one past the last character of string to be deleted: ");
+			System.out.print("Please enter the index one past the last character of string to be deleted: ");
 			int endIndex = input.nextInt();
 
-			if (begIndex < 0 || begIndex > endIndex || endIndex > beforeDelete.length()) {
+			if (begIndex < 0 || begIndex > endIndex || endIndex > deleteStr.length()) {
 				throw new StringIndexOutOfBoundsException();
 			}
 			else {
-				beforeDelete.delete(begIndex, endIndex);
-				setLineEditor(beforeDelete);
+				deleteStr.delete(begIndex, endIndex);
+				setLineEditor(deleteStr);
 			}
 		}
 		catch (StringIndexOutOfBoundsException e) {
@@ -48,23 +48,24 @@ public class Editor {
 		}
 	}
 
+
 	public void setUpperCase() throws StringIndexOutOfBoundsException {
 
-		StringBuilder beforeCase = getLineEditor();
+		StringBuilder upperString = getLineEditor();
+
+		System.out.print("\nPlease enter the index of the string to convert to upper case: ");
+		int replaceIndex = input.nextInt();
 
 		try {
-			System.out.println("\nPlease enter the index of the string to convert to upper case: ");
-			int replaceIndex = input.nextInt();
-
-			if (replaceIndex < 0 || replaceIndex > beforeCase.length()) {
+			if (replaceIndex < 0 || replaceIndex > upperString.length()) {
 				throw new StringIndexOutOfBoundsException();
 			}
 			else if (Character.isLowerCase(replaceIndex)) {
-				beforeCase.replace(replaceIndex, replaceIndex,
-				                   Character.toString(Character.toUpperCase(beforeCase.charAt(replaceIndex)))
-				                  );
-				System.out.println("Updated Line Editor = " + beforeCase);
-				setLineEditor(beforeCase);
+				upperString.replace(replaceIndex, replaceIndex,
+				                    Character.toString(Character.toUpperCase(upperString.charAt(replaceIndex)))
+				                   );
+				System.out.println("Updated Line Editor = " + upperString);
+				setLineEditor(upperString);
 			}
 			else {
 				System.out.println("The character at the specified location is already in upper case, " +
@@ -73,35 +74,34 @@ public class Editor {
 			}
 		}
 		catch (StringIndexOutOfBoundsException e) {
-			System.out.println(e + "\nThe segment of string is not deleted due to error!");
+			System.out.println("\n" + e + "\nThe character is not converted due to error!");
 		}
 	}
 
 
 	public void countWords() {
 
-		StringBuilder beforeCount = getLineEditor();
+		StringBuilder countString = getLineEditor();
 
-		System.out.println("\nPlease enter the target string: ");
+		System.out.print("\nPlease enter the target string: ");
 		String targetWord = input.nextLine();
 
-		String[] result = beforeCount.toString().split("\\s");
+		String[] result = countString.toString().split("\\s");
 
 		int foundTargetWord = 0;
-
 		for (int i = 0; i < result.length; i++) {
-			if (targetWord.matches(result[i])) {
+			if (targetWord.equalsIgnoreCase(result[i])) {
 				foundTargetWord++;
 			}
 		}
 
 		if (foundTargetWord > 0) {
-			System.out.println("The target word " + targetWord + " appears " + foundTargetWord + " times in " +
-					                   beforeCount
+			System.out.println("\nThe target word " + targetWord + " appears " + foundTargetWord + " times in " +
+					                   countString
 			                  );
 		}
 		else {
-			System.out.println("The target word " + targetWord + " is not in " + beforeCount);
+			System.out.println("\nThe target word " + targetWord + " is not in " + countString);
 		}
 	}
 }

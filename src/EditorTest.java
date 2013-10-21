@@ -1,14 +1,9 @@
-
-
 import java.util.Scanner;
 
-/**
- * Created with IntelliJ IDEA. User: Jonathan Date: 10/20/13 Time: 4:35 PM To change this template use File | Settings |
- * File Templates.
- */
 public class EditorTest {
 
 	public static void main(String[] args) {
+
 		Scanner input = new Scanner(System.in);
 		char charChoice;
 		int exit = 0;
@@ -17,9 +12,10 @@ public class EditorTest {
 		Editor editor = new Editor(sbObject.toString());
 
 		do {
-			System.out.print("\n\nWelcome to My Line Editor\n=======================\n\nYour current string is : " +
-					                 editor + "\n\nS - Change String\nD - Delete String\nU - Set Upper Case\nC - " +
-					                 "Count words\nX - To eXit the program\n\nPlease enter your choice : "
+			System.out.print("\n\nWelcome to My Line Editor\n=========================\n\nYour current string is : " +
+					                 editor.getLineEditor() + "\n\nS - Change String\nD - Delete String\nU - Set " +
+					                 "Upper" +
+					                 " Case\nC - Count words\nX - To eXit the program\n\nPlease enter your choice : "
 			                );
 			String stringChoice = input.nextLine();
 			charChoice = stringChoice.toUpperCase().charAt(0);
@@ -45,9 +41,9 @@ public class EditorTest {
 
 				case 'X':
 					exit = 1;
+					break;
 
 			}
-
 		} while (exit == 0);
 	}
 }
