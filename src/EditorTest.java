@@ -1,4 +1,4 @@
-package edu.utsa.assignmenttwo;
+
 
 import java.util.Scanner;
 
@@ -8,18 +8,17 @@ import java.util.Scanner;
  */
 public class EditorTest {
 
-	private static StringBuilder sbObject = new StringBuilder("Mary had a little lamb, Little lamb, little lamb!");
-
 	public static void main(String[] args) {
-
-
 		Scanner input = new Scanner(System.in);
 		char charChoice;
+		int exit = 0;
 
+		StringBuilder sbObject = new StringBuilder("Mary had a little lamb, Little lamb, little lamb!");
+		Editor editor = new Editor(sbObject.toString());
 
 		do {
 			System.out.print("\n\nWelcome to My Line Editor\n=======================\n\nYour current string is : " +
-					                 sbObject + "\n\nS - Change String\nD - Delete String\nU - Set Upper Case\nC - " +
+					                 editor + "\n\nS - Change String\nD - Delete String\nU - Set Upper Case\nC - " +
 					                 "Count words\nX - To eXit the program\n\nPlease enter your choice : "
 			                );
 			String stringChoice = input.nextLine();
@@ -27,22 +26,28 @@ public class EditorTest {
 
 			switch (charChoice) {
 				case 'S':
-					System.out.print("Please enter a new string : ");
+					System.out.print("\nPlease enter a new string : ");
 					String newString = input.nextLine();
-					sbObject.setLineEditor();
-
+					editor = new Editor(newString);
+					break;
 
 				case 'D':
-
+					editor.deleteString();
+					break;
 
 				case 'U':
+					editor.setUpperCase();
+					break;
 
 				case 'C':
+					editor.countWords();
+					break;
 
 				case 'X':
+					exit = 1;
 
 			}
 
-		} while (charChoice != 'x');
+		} while (exit == 0);
 	}
 }
