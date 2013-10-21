@@ -5,6 +5,8 @@
  */
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Editor {
 
@@ -37,7 +39,7 @@ public class Editor {
 
 			deleteStr.delete(begIndex, endIndex);
 			setLineEditor(deleteStr);
-			System.out.print("\nUpdated Line Editor = " + getLineEditor());
+			System.out.print("\nUpdated Line Editor = " + getLineEditor() + "\n");
 		}
 		catch (StringIndexOutOfBoundsException e) {
 			System.out.println("\n" + e + "\nThe segment of string is not deleted due to error!");
@@ -49,25 +51,24 @@ public class Editor {
 
 		StringBuilder upperString = getLineEditor();
 
-		System.out.print(upperString.length());
-
-		System.out.print("\nPlease enter the index of the string to convert to upper case: ");
-		int replaceIndex = input.nextInt();
-		input.nextLine();
-
 		try {
-			//	if (Character.isLowerCase(replaceIndex)) {
-			upperString.replace(replaceIndex, replaceIndex,
-			                    Character.toString(Character.toUpperCase(upperString.charAt(replaceIndex)))
-			                   );
-			System.out.println("Updated Line Editor = " + upperString);
-			setLineEditor(upperString);
-			//	}
-			//	else {
-			System.out.println("\nThe character at the specified location is already in upper case, " +
-					                   "no conversion is done"
-			                  );
-			//	}
+			System.out.print("\nPlease enter the index of the string to convert to upper case: ");
+			int replaceIndex = input.nextInt();
+			input.nextLine();
+			char testCase = upperString.charAt(replaceIndex);
+
+			if (Character.isLowerCase(testCase)) {
+				upperString.replace(replaceIndex, replaceIndex + 1,
+				                    Character.toString(Character.toUpperCase(upperString.charAt(replaceIndex)))
+				                   );
+				System.out.println("\nUpdated Line Editor = " + upperString + "\n");
+				setLineEditor(upperString);
+			}
+			else {
+				System.out.println("\nThe character at the specified location is already in upper case, " +
+						                   "no conversion is done."
+				                  );
+			}
 		}
 		catch (StringIndexOutOfBoundsException e) {
 			System.out.println("\n" + e + "\nThe character is not converted due to error!");
@@ -77,17 +78,17 @@ public class Editor {
 
 	public void countWords() {
 
+		StringBuilder countString = getLineEditor();
+
 		System.out.print("\nPlease enter the target string: ");
 		String targetWord = input.nextLine();
 
-		StringBuilder countString = getLineEditor();
-		String[] result = countString.toString().split("\\s");
+		Pattern pattern = Pattern.compile(targetWord);
+		Matcher matcher = pattern.matcher(countString);
 
 		int foundTargetWord = 0;
-		for (int i = 0; i < result.length; i++) {
-			if (targetWord.equalsIgnoreCase(result[i])) {
-				foundTargetWord++;
-			}
+		while (matcher.find()) {
+			foundTargetWord++;
 		}
 
 		if (foundTargetWord > 0) {
