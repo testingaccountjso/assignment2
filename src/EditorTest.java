@@ -40,7 +40,7 @@ public class EditorTest {
 					exit = 1;
 					break;
 				default:
-					System.out.print("Invalid input! Please re-enter or type in 'X' to eXit!");
+					System.out.print("\nInvalid input! Please re-enter or type in 'X' to eXit!\n");
 					break;
 			}
 		} while (exit == 0);
